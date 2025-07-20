@@ -1,0 +1,29 @@
+[project]
+name = "chase_uk_pdf_bank_statements_to_csv"
+version = "0.0.1"
+description = "Converts Chase UK bank statements from PDFs (the only format provided) to CSVs"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+    {name = "Chris Hyland"},
+]
+
+license = {text = "MIT"}
+
+dependencies = [
+    "jpype1>=1.6.0",
+    "pandas==2.3.1",
+    "tabula_py==2.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+    "ruff>=0.9.2",
+    "pytest",
+    "itables",
+    "pip-audit",
+    "pipask",
+    "jupyter",
+    "ipykernel",
+]

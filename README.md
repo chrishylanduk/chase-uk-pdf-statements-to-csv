@@ -6,22 +6,36 @@ This has no affiliation with Chase UK.
 
 Last tested on statements from: Febuary 2024.
 
-## Usage
+## Getting started
 
-1. Install Java, and check $JAVA_HOME is set
+### Requirements
 
-This script uses [tabula-py](https://tabula-py.readthedocs.io/en/latest/index.html), which is a wrapper for [tabula-java](https://github.com/tabulapdf/tabula-java).
+1. Python 3.13+ installed
+2. Java installed, and $JAVA_HOME set
+    This script uses [tabula-py](https://tabula-py.readthedocs.io/en/latest/index.html), which is a wrapper for [tabula-java](https://github.com/tabulapdf/tabula-java).
 
-Install Java. Then make sure that your $JAVA_HOME environment variable is set correctly ([Mac help](https://stackoverflow.com/a/66876903)).
+    Install Java. Then make sure that your $JAVA_HOME environment variable is set correctly ([Mac help](https://stackoverflow.com/a/66876903)).
 
-See the [tabula-py FAQs](https://github.com/tabulapdf/tabula-java) for troubleshooting.
+    See the [tabula-py FAQs](https://github.com/tabulapdf/tabula-java) for troubleshooting.
+3. [uv](https://docs.astral.sh/uv/) installed. [Installation instructions](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer).
 
-2. Install dependencies:
+### Usage
+
+1. Install dependencies and set up a virtual environment:
 ```
-pip install -r requirements.txt
+uv sync
 ```
-3. Copy PDF(s) to convert into the `pdf_inputs` directory
 
-4. Run `python convert_pdf_inputs_to_csv_outputs.py`
+2. Copy PDF(s) to convert into the `data/pdf_inputs` directory
 
-5. Cross fingers that correctly-structured CSV(s) appear in `csv_outputs`
+3. Run:
+```uv run src/chase_uk_pdf_bank_statements_to_csv/run_pipeline.py```
+
+4. Cross fingers that correctly-structured CSV(s) appear in `outputs/csv_outputs`
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Acknowledgements
+
+This project was created using [Chris Python data science and AI Copier template](https://github.com/chrishylanduk/chris_python_data_science_ai_copier_template).

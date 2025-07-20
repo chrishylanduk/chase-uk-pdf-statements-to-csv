@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier
+_commit: 0.1.0
+_src_path: https://github.com/chrishylanduk/chris_python_data_science_ai_copier_template
+author_name: Chris Hyland
+libraries:
+- pandas
+license: MIT
+project_description: Converts Chase UK bank statements from PDFs (the only format
+    provided) to CSVs
+project_name: chase_uk_pdf_bank_statements_to_csv
