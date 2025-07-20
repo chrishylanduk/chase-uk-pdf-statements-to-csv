@@ -21,7 +21,7 @@ def chase_uk_pdf_statement_to_df(pdf_path: str) -> pd.DataFrame:
     )
     statement_df = statement_df[["Combined"]]
 
-    # Chop off all lines above and including "Opening balance", and those below 
+    # Chop off all lines above and including "Opening balance", and those below
     # and including "Closing balance"
     last_opening_balance_location = (
         statement_df.iloc[::-1]["Combined"]
@@ -79,7 +79,7 @@ def chase_uk_pdf_statement_to_df(pdf_path: str) -> pd.DataFrame:
             statement_df.at[i - 1, "Type"] = row_value
             statement_df.at[i, "Delete"] = True
 
-    statement_df = statement_df[statement_df["Delete"] != True]
+    statement_df = statement_df[statement_df["Delete"] != True]  # noqa: E712
     statement_df = statement_df.drop("Delete", axis=1)
 
     # Split out the transaction date, the first three words of each line
@@ -115,12 +115,14 @@ def chase_uk_pdf_statement_to_df(pdf_path: str) -> pd.DataFrame:
     return statement_df
 
 
-input_pdf_files = find_pdf_files("pdf_inputs")
+input_pdf_files = find_pdf_files("data/pdf_inputs")
 
 for input_pdf_file in input_pdf_files:
     input_pdf_file_name = os.path.splitext(os.path.basename(input_pdf_file))[0]
 
     statement_df = chase_uk_pdf_statement_to_df(input_pdf_file)
     statement_df.to_csv(
-        f"csv_outputs/{input_pdf_file_name}.csv", encoding="utf-8-sig", index=False
+        f"outputs/csv_outputs/{input_pdf_file_name}.csv",
+        encoding="utf-8-sig",
+        index=False,
     )
